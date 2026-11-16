@@ -15,11 +15,11 @@ The protocol documents are archived separately: https://doi.org/10.5281/zenodo.2
 | `training/twin_grouped/` | N-CMAPSS re-runs with near-duplicate units grouped (16-group leave-one-group-out), used for the main N-CMAPSS results, and `twin_agg.py` |
 | `training/ncmapss_prep/` | Download and reduction of N-CMAPSS DS01 and DS02 to cycle-level features (`ncm_cycles.npz`) |
 | `training/pcmambasde/` | Wrapper used to train PC-MambaSDE under the case-1 protocol (the model code itself is not redistributed, see below) |
-| `data/` | Signed prediction errors per test engine (C-MAPSS) or per unit (N-CMAPSS), for every model, scenario and seed, as JSON; `twin/unit_scores.csv` |
+| `data/` | Signed prediction errors per test engine (C-MAPSS) or per unit (N-CMAPSS), for every model, scenario and seed, as JSON; `twin/` holds the 16-group N-CMAPSS runs per seed (`nq3g`, `nq3bg`, `q6ng`, `q6nxg`) and `unit_scores.csv` |
 | `analysis/` | Scripts that recompute every table, statistic and figure of the paper and supplement from `data/`; their outputs are included |
 | `figures/`, `manuscript/` | Output folders of the figure and supplement scripts |
 
-Internal arm names in the code differ from the paper; the mapping is given in Supplementary Note S1 (for example GRU-D = `B1_GRUD`, IMP = `B2s_imputer`, SNAP = `B3_static`, PC-MambaSDE = `B4_PCMambaSDE`; case 2: S1 = `A1`, S2 = `A2`, S3 = `B3`, S4 = `B2`, S5 = `B4`, S6 = `A6L`, S8 = `C8`).
+Internal arm names in the code differ from the paper; the mapping is given in Supplementary Note S1, and Supplementary Note S4 maps seeds, features, twin groups, scripts and result files to the tables (for example GRU-D = `B1_GRUD`, IMP = `B2s_imputer`, SNAP = `B3_static`, PC-MambaSDE = `B4_PCMambaSDE`; case 2: S1 = `A1`, S2 = `A2`, S3 = `B3`, S4 = `B2`, S5 = `B4`, S6 = `A6L`, S8 = `C8`).
 
 ## Reproducing the tables and figures (no training needed)
 
@@ -32,7 +32,8 @@ python analysis/make_tables_q6.py
 python analysis/round1_checks.py
 CMAPSS_DIR=path/to/CMAPSSData python analysis/round3_checks.py
 python analysis/make_figures_v8.py
-python analysis/make_supplementary_v8.py
+python analysis/revision_v10.py
+python analysis/make_supplementary_v10.py
 ```
 
 Tested with Python 3.12, NumPy 2.4, SciPy 1.17, scikit-learn 1.8 and Matplotlib 3.10. `round3_checks.py` reads the raw C-MAPSS test files to count padded windows.
