@@ -56,4 +56,4 @@ Code: MIT licence (`LICENSE`). Result files in `data/`: CC BY 4.0 (`data/LICENSE
 
 ## Citation
 
-Please cite the paper and this archive: https://doi.org/10.5281/zenodo.24269264.
+Please cite the paper and this archive: https://doi.org/10.5281/zenodo.24269263.
