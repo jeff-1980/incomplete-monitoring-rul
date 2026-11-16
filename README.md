@@ -33,7 +33,7 @@ python analysis/round1_checks.py
 CMAPSS_DIR=path/to/CMAPSSData python analysis/round3_checks.py
 python analysis/make_figures_v8.py
 python analysis/revision_v10.py
-python analysis/make_supplementary_v10.py
+python analysis/make_supplementary_v11.py
 ```
 
 Tested with Python 3.12, NumPy 2.4, SciPy 1.17, scikit-learn 1.8 and Matplotlib 3.10. `round3_checks.py` reads the raw C-MAPSS test files to count padded windows.

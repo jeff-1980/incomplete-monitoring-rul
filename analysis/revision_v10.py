@@ -84,7 +84,7 @@ SQ = json.load(open(B + '/analysis/summary_q3d.json'))
 Rd = {fd: [json.load(open(f'{D}/q3d_{fd}_s{s}.json')) for s in range(5)] for fd in FDS}
 Rx = {fd: [json.load(open(f'{D}/q6/q6x_{fd}_s{s}.json')) for s in range(5)] for fd in FDS}
 P('\n## Table S17. Complete records: long-input variants against the dense model (exploratory non-inferiority)\n')
-P('ΔMAE: seed-averaged engine absolute error, variant minus dense model, 95% engine-bootstrap interval. ΔRMSE: mean over seeds of the RMSE difference, 95% engine-bootstrap interval. "Within 1 cycle": upper bound of the interval below +1.0 cycle.\n')
+P('ΔMAE: seed-averaged engine absolute error, variant minus dense model, 95% engine-bootstrap interval. ΔRMSE: mean over seeds of the RMSE difference, 95% engine-bootstrap interval. "Within 1 cycle": upper bound of the interval below +1.0 cycle. Source runs: A8 and A5 rows use the five-seed case-1 exploratory run (Table 3); S8 and S4 rows use the five-seed case-2 run. The A5 rows therefore differ from the three-seed pre-specified H2 analysis in section 4.2 and Table S2 (for example FD001: −0.38 here, −0.14 there) and do not replace it.\n')
 P('| Subset | Comparison | ΔMAE [95% CI] | ΔRMSE [95% CI] | Within 1 cycle (MAE / RMSE) |'); P('|---|---|---|---|---|')
 for fd in FDS:
     for lab, E1, E2 in (('A8 vs A1', np.array([r['k1']['A8'] for r in Rd[fd]]), np.array([r['k1']['A1'] for r in Rd[fd]])),

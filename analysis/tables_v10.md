@@ -42,7 +42,7 @@ Case 2, N-CMAPSS (twins grouped, five seeds): S4 minus the better of S1/S2 (chos
 
 ## Table S17. Complete records: long-input variants against the dense model (exploratory non-inferiority)
 
-ΔMAE: seed-averaged engine absolute error, variant minus dense model, 95% engine-bootstrap interval. ΔRMSE: mean over seeds of the RMSE difference, 95% engine-bootstrap interval. "Within 1 cycle": upper bound of the interval below +1.0 cycle.
+ΔMAE: seed-averaged engine absolute error, variant minus dense model, 95% engine-bootstrap interval. ΔRMSE: mean over seeds of the RMSE difference, 95% engine-bootstrap interval. "Within 1 cycle": upper bound of the interval below +1.0 cycle. Source runs: A8 and A5 rows use the five-seed case-1 exploratory run (Table 3); S8 and S4 rows use the five-seed case-2 run. The A5 rows therefore differ from the three-seed pre-specified H2 analysis in section 4.2 and Table S2 (for example FD001: −0.38 here, −0.14 there) and do not replace it.
 
 | Subset | Comparison | ΔMAE [95% CI] | ΔRMSE [95% CI] | Within 1 cycle (MAE / RMSE) |
 |---|---|---|---|---|
