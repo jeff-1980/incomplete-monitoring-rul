@@ -43,7 +43,7 @@ Tested with Python 3.12, NumPy 2.4, SciPy 1.17, scikit-learn 1.8 and Matplotlib 
 2. For N-CMAPSS, run `training/ncmapss_prep/ncm_prep.py` to create `ncm_cycles.npz` in the working directory.
 3. Run the training scripts from their folder, for example `python q3d_full.py FD001 0` (subset, seed). Results are written as JSON to `RESULTS_DIR` (default `results/`).
 
-Models were trained with PyTorch [PYTORCH_VERSION] on an NVIDIA RTX A5000 GPU (five-seed runs) and on CPU (pre-specified case-1 run). GPU training is not bit-for-bit deterministic across hardware.
+Models were trained with PyTorch 2.11.0 (CUDA 13.0) on an NVIDIA RTX A5000 Laptop GPU (five-seed runs) and on CPU (pre-specified case-1 run). GPU training is not bit-for-bit deterministic across hardware.
 
 ## PC-MambaSDE
 
@@ -55,4 +55,4 @@ Code: MIT licence (`LICENSE`). Result files in `data/`: CC BY 4.0 (`data/LICENSE
 
 ## Citation
 
-Please cite the paper and this archive: https://doi.org/[DOI_CODE].
+Please cite the paper and this archive: https://doi.org/10.5281/zenodo.24269264.
