@@ -1,0 +1,6 @@
+64d1aa4e01e7ea72aa5ab0040f4684d5 *PROTOCOL_upgrade1.md
+a4d59033bcf75dada56a2368a15a7e53 *ext.py
+25d334db0c85353d351522d2a92df8a2 *cmx.py
+f2762d29ffa498b01a35f686d03f0dcb *ncm_cycles_ds03_08.npz
+Mon Nov 16 14:01:16 UTC 2026
+f95e5723eea45a9c3e0817b109ea11fc *analyse_upgrade1.py

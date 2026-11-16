@@ -15,6 +15,7 @@ The protocol documents are archived separately: https://doi.org/10.5281/zenodo.2
 | `training/twin_grouped/` | N-CMAPSS re-runs with near-duplicate units grouped (16-group leave-one-group-out), used for the main N-CMAPSS results, and `twin_agg.py` |
 | `training/ncmapss_prep/` | Download and reduction of N-CMAPSS DS01 and DS02 to cycle-level features (`ncm_cycles.npz`) |
 | `control_a8/` | A8 history-span control: protocol (written and checksummed before the run), training script q3e.py, results, analysis (Tables S19-S20) |
+| `upgrade1/` | External cohort (N-CMAPSS DS03-DS08, fixed split), missingness mechanisms not seen in training, padding experiment: protocol (checksummed before the runs), ext.py, cmx.py, results, analysis (Tables S21-S25, Figure 6). ext.py needs `ncm_cycles_ds03_08.npz`, produced by `training/ncmapss_prep/fetch_prep_ds03_08.py` from the NASA files |
 | `training/pcmambasde/` | Wrapper used to train PC-MambaSDE under the case-1 protocol (the model code itself is not redistributed, see below) |
 | `data/` | Signed prediction errors per test engine (C-MAPSS) or per unit (N-CMAPSS), for every model, scenario and seed, as JSON; `twin/` holds the 16-group N-CMAPSS runs per seed (`nq3g`, `nq3bg`, `q6ng`, `q6nxg`) and `unit_scores.csv` |
 | `analysis/` | Scripts that recompute every table, statistic and figure of the paper and supplement from `data/`; their outputs are included |
@@ -35,7 +36,9 @@ CMAPSS_DIR=path/to/CMAPSSData python analysis/round3_checks.py
 python analysis/make_figures_v8.py
 python analysis/revision_v10.py
 python control_a8/analyse_q3e.py
-python analysis/make_supplementary_v13.py
+python upgrade1/analyse_upgrade1.py
+python analysis/make_fig6.py
+python analysis/make_supplementary_v15.py
 ```
 
 Tested with Python 3.12, NumPy 2.4, SciPy 1.17, scikit-learn 1.8 and Matplotlib 3.10. `round3_checks.py` reads the raw C-MAPSS test files to count padded windows.
