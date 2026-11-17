@@ -1,0 +1,1 @@
+MIT: 9540 prediction times. Windows containing a record whose filled value comes from a cycle that is not among the available records of the scenario: complete records 4, one record in 10 cycles 711 (7.5%), outage 8 (0.1%). Filled values taken from a cycle after the prediction time: 0.
