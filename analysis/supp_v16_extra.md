@@ -1,0 +1,30 @@
+## Note S3. Protocol hypotheses and where they are reported
+
+| Protocol | Hypothesis | Status | Where reported |
+|---|---|---|---|
+| Case 1, C-MAPSS | H1: A5 better than min(A1, A2, A3) at k = 5 and irregular 1–5 | Confirmatory | Section 4.1, Table 2, Table S16 |
+| Case 1, C-MAPSS | H2: A5 not significantly worse than A1 at k = 1 | Confirmatory (no-detected-difference rule) | Section 4.2, Table S17 |
+| Case 1, C-MAPSS | H3: A5 vs A4 (gap channel) | Secondary, uncorrected | Section 4.2, Table S5 |
+| Case 1, C-MAPSS | H4: A5 vs A6 at k = 1 (history length) | Secondary, uncorrected | Section 4.2 |
+| Case 1, C-MAPSS | H5: A5 not worse than interval-specific A7 at k = 2–5 | Secondary, uncorrected | Section 4.2 |
+| Case 1, N-CMAPSS | H1, H2 as above (two H1 comparisons) | Confirmatory | Sections 4.1–4.2, Tables 2, S9, S16 |
+| Case 1, N-CMAPSS (A8, GRU-D) | A8 non-inferior to A5 and better than min(A1, A2, A3); A8 non-inferior to A1 at k = 1; GRU-D as A8 (secondary) | Protocol-guided (written after one fold of a stopped run) | Section 4.4, Table S9 |
+| Case 2 | H1: S4 better than min(S1, S2); H2: S4 not worse than S1 with complete history (CI upper bound < 1.0) | Confirmatory | Sections 4.5–4.6, Tables 4, S9, S16, S17 |
+| Case 2 | H3: S4 vs S3 (indicator); H4: S4 vs S5 (length-specific models) | Secondary, uncorrected | Section 4.5, Table S11 |
+| Case 2, appendix | H1′, H2′ for S8 on N-CMAPSS | Written after the C-MAPSS results | Section 4.6 |
+| Case 1, A8 history-span control | C1 A8F vs A6, C2 A8 vs A6S, C3 A6S vs A6, C4 A8F vs A8; reading rule fixed in advance | Exploratory; protocol written and checksummed before the run, after a source-code audit had found the A8 span and padding difference | Section 4.3, Tables S19–S20 |
+| Upgrade protocol (external cohort, new missingness, padding) | E1, E2 on DS03–DS08 (confirmatory, fixed split and models); E3 complete-record cost; block and regime-dependent missingness with a reading rule; padding experiment with predicted ordering S3E > S3 > S3L | Protocol, training and analysis scripts written and checksummed before the runs; DS03–DS08 screened on features only beforehand | Sections 4.8–4.10, Tables 5, S21–S25 |
+| Backbone protocol | G1 A5 vs best remedy, G2 A8 vs A6, G3 S4 vs better padding, for a TCN and a Transformer; carry-over rule | Protocol and training scripts checksummed before the runs; hyperparameters selected on validation units only | Section 4.11, Table 6, Tables S26–S27 |
+
+"Added after review" in Table S4 refers to analyses added after the authors' internal simulated reviews during manuscript preparation, not to journal review.
+
+## Note S4. Reproduction map
+
+- Seeds: 0, 1, 2 for the case-1 pre-specified C-MAPSS run and the case-1 N-CMAPSS runs; 0–4 for the case-1 five-seed run, PC-MambaSDE and case 2. The seed sets the PyTorch initialisation and the random degradation of training windows.
+- Test patterns: regular spacing is deterministic; the irregular C-MAPSS gap sequence of test engine u is drawn from a NumPy generator seeded with 1000 + u and is identical for all arms and seeds.
+- C-MAPSS inputs: sensors 2, 3, 4, 7, 8, 9, 11, 12, 13, 14, 15, 17, 20 and 21 (numbering of the original data files, in this order); the three operating settings are not model inputs and are used only to assign operating regimes for standardisation (FD002, FD004).
+- N-CMAPSS features (32 per flight cycle): within-cycle mean and standard deviation of the 14 measured signals of the X_s block (T24, T30, T48, T50, P15, P2, P21, P24, Ps30, P40, P50, Nf, Nc, Wf) and the means of the four scenario descriptors of the W block (altitude, Mach number, throttle-resolver angle, fan-inlet temperature).
+- Twin groups: DS01 u2 with DS02 u2, DS01 u5 with DS02 u5, DS01 u10 with DS02 u10; the other 13 units form one group each (16 groups).
+- Scripts and files (repository folders): case-1 C-MAPSS pre-specified run training/case1/q3.py → data/q3_FD00x_s*.json (Tables 2, S1–S6); five-seed run training/case1/q3d_full.py → data/q3d_*.json (Table 3, S7, S8); PC-MambaSDE training/pcmambasde/q3m.py → data/pcm/; case-1 N-CMAPSS training/case1/nq3.py, nq3b.py (19 folds) and training/twin_grouped/nq3g.py, nq3bg.py (16 groups) → data/nq3*_s*.json, data/twin/; case 2 training/case2/q6.py, q6x.py, q6n.py, q6nx.py and training/twin_grouped/q6ng.py, q6nxg.py → data/q6/, data/twin/. Tables and figures: analysis/make_tables*.py, round1_checks.py, round3_checks.py, revision_v10.py (Tables S16–S18), make_figures_v8.py, make_supplementary_v16.py. Other backbones: upgrade2/PROTOCOL_upgrade2.md, bbm.py, bb_c.py, bb_e.py (seeds 0–4; selected configurations in upgrade2/results/sel_*.json) → upgrade2/results/, analyse_upgrade2.py (Tables S26–S27). External cohort, new missingness and padding experiment: upgrade1/PROTOCOL_upgrade1.md, ext.py (DS03–DS08; seeds 0–4), cmx.py (C-MAPSS) → upgrade1/results/, analyse_upgrade1.py (Tables S21–S25), analysis/make_fig6.py; DS03–DS08 features from training/ncmapss_prep/fetch_prep_ds03_08.py. Excluded units: training DS03 u5; test DS03 u10, u11, u14, u15 and DS08a u14. Test profile groups: DS05/DS06/DS07 u7, u8, u9 and u10 (three units each); all other test units single. A8 history-span control: control_a8/PROTOCOL_A8_control.md, q3e.py → control_a8/results/q3e_*.json, analyse_q3e.py (Tables S19–S20).
+- Shared predictions: the case-2 models S1 and S6 are the case-1 five-seed models A1 and A6 (identical predictions), not additional replicates.
+

@@ -1,0 +1,7 @@
+cf078ba1d60f46fa4194bdef5d646a1e *PROTOCOL_upgrade2.md
+0bc4c598468c1d0a5734cb7e4219aead *bbm.py
+7f183de5eb53d629b30d132aa002e44d *bb_c.py
+53a017f7e9b7ef782153ff70ceb2a009 *bb_e.py
+Mon Nov 16 14:45:59 UTC 2026
+9a086c3a2814926e98d43fc61a82706b *analyse_upgrade2.py
+4e7b2e2a6562d6146ad628403cd7877f *run_bb.sh
