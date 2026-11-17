@@ -1,0 +1,6 @@
+e8626e4816242f37c91eea72aa6584b7 *PROTOCOL_upgrade3.md
+1c375af861cdca85457dffae606c0c29 *q3g.py
+7fdafe67a2154ea4600c9f8041d6db07 *extg.py
+Tue Nov 17 03:47:36 UTC 2026
+1763c2fa12356a2cb093cd37a06fb1b6 *analyse_upgrade3.py
+062c85998bd9244d4d38d914c8b58bca *run_all.sh
