@@ -18,7 +18,7 @@ The protocol documents are archived separately: https://doi.org/10.5281/zenodo.2
 | `upgrade1/` | External cohort (N-CMAPSS DS03-DS08, fixed split), missingness mechanisms not seen in training, padding experiment: protocol (checksummed before the runs), ext.py, cmx.py, results, analysis (Tables S21-S25, Figure 6); flight-profile screening (profile_screen.py, profile_groups.json). ext.py needs `ncm_cycles_ds03_08.npz`, produced by `training/ncmapss_prep/fetch_prep_ds03_08.py` from the NASA files |
 | `upgrade2/` | Other backbones (TCN, Transformer): protocol (checksummed before the runs), bbm.py, bb_c.py, bb_e.py, selected configurations, results, analysis (Table 6, Tables S26-S27); amendment with selection by flight-profile group on the external cohort (bb_e2.py, analyse_upgrade2b.py; superseded results kept) |
 | `upgrade3/` | Generic random deletion control, share of complete training windows, smoothing: protocol (checksummed before the runs), q3g.py, extg.py, selected shares, results, analysis (Table 7, Tables S28-S31); analyse_upgrade3_corr.py: correction of the Q2 comparisons after independent verification (Holm adjustment, carry-forward among the remedies; Table S32), no retraining |
-| `realsys/` | Missingness simulation on real battery-ageing records (MIT fast-charging cells, XJTU batches 1-4): protocol (checksummed before the runs), rslib.py, rs.py, per-prediction errors of every fold and seed, analysis (section 4.13, Table 8, Table S33). The per-cycle input tables (`mit.csv.gz`, `xjtu.csv.gz`, checksums in `checksums_before_run.txt`) are derived from the public data sets and are not redistributed here; their columns are listed in rslib.py |
+| `realsys/` | Missingness simulation on real battery-ageing records (MIT fast-charging cells, XJTU batches 1-4): protocol (checksummed before the runs), rslib.py, rs.py, per-prediction errors of every fold and seed, analysis (section 4.13, Table 8, Table S33). The per-cycle input tables (`mit.csv.gz`, `xjtu.csv.gz`, checksums in `checksums_before_run.txt`) are derived from the public data sets with the scripts in `realsys/export_scripts/` (written in an earlier step of the project; the export was not repeated here) and are not redistributed |
 | `training/pcmambasde/` | Wrapper used to train PC-MambaSDE under the case-1 protocol (the model code itself is not redistributed, see below) |
 | `data/` | Signed prediction errors per test engine (C-MAPSS) or per unit (N-CMAPSS), for every model, scenario and seed, as JSON; `twin/` holds the 16-group N-CMAPSS runs per seed (`nq3g`, `nq3bg`, `q6ng`, `q6nxg`) and `unit_scores.csv` |
 | `analysis/` | Scripts that recompute every table, statistic and figure of the paper and supplement from `data/`; their outputs are included |
@@ -46,7 +46,8 @@ CMAPSS_DIR=path/to/CMAPSSData python analysis/make_fig1_v3.py   # Figure 1 of th
 python upgrade3/analyse_upgrade3.py
 python upgrade3/analyse_upgrade3_corr.py
 python realsys/analyse_realsys.py   # run inside realsys/
-python analysis/make_supplementary_v28.py   # writes manuscript/supplementary_v28.md (final names and reference numbers, Tables S32 and S33)
+python realsys/sens_continuation.py   # run inside realsys/; sensitivity analysis added after the runs
+python analysis/make_supplementary_v30.py   # writes manuscript/supplementary_v30.md (final names and reference numbers, Tables S32 and S33)
 ```
 
 Tested with Python 3.12, NumPy 2.4, SciPy 1.17, scikit-learn 1.8 and Matplotlib 3.10. `round3_checks.py` reads the raw C-MAPSS test files to count padded windows.
