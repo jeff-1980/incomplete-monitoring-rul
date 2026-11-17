@@ -17,7 +17,7 @@ The protocol documents are archived separately: https://doi.org/10.5281/zenodo.2
 | `control_a8/` | A8 history-span control: protocol (written and checksummed before the run), training script q3e.py, results, analysis (Tables S19-S20) |
 | `upgrade1/` | External cohort (N-CMAPSS DS03-DS08, fixed split), missingness mechanisms not seen in training, padding experiment: protocol (checksummed before the runs), ext.py, cmx.py, results, analysis (Tables S21-S25, Figure 6); flight-profile screening (profile_screen.py, profile_groups.json). ext.py needs `ncm_cycles_ds03_08.npz`, produced by `training/ncmapss_prep/fetch_prep_ds03_08.py` from the NASA files |
 | `upgrade2/` | Other backbones (TCN, Transformer): protocol (checksummed before the runs), bbm.py, bb_c.py, bb_e.py, selected configurations, results, analysis (Table 6, Tables S26-S27); amendment with selection by flight-profile group on the external cohort (bb_e2.py, analyse_upgrade2b.py; superseded results kept) |
-| `upgrade3/` | Generic random deletion control, share of complete training windows, smoothing: protocol (checksummed before the runs), q3g.py, extg.py, selected shares, results, analysis (Table 7, Tables S28-S31) |
+| `upgrade3/` | Generic random deletion control, share of complete training windows, smoothing: protocol (checksummed before the runs), q3g.py, extg.py, selected shares, results, analysis (Table 7, Tables S28-S31); analyse_upgrade3_corr.py: correction of the Q2 comparisons after independent verification (Holm adjustment, carry-forward among the remedies; Table S32), no retraining |
 | `training/pcmambasde/` | Wrapper used to train PC-MambaSDE under the case-1 protocol (the model code itself is not redistributed, see below) |
 | `data/` | Signed prediction errors per test engine (C-MAPSS) or per unit (N-CMAPSS), for every model, scenario and seed, as JSON; `twin/` holds the 16-group N-CMAPSS runs per seed (`nq3g`, `nq3bg`, `q6ng`, `q6nxg`) and `unit_scores.csv` |
 | `analysis/` | Scripts that recompute every table, statistic and figure of the paper and supplement from `data/`; their outputs are included |
@@ -43,7 +43,8 @@ python upgrade2/analyse_upgrade2b.py
 python analysis/make_fig67_v26.py   # Figures 6 and 7 of the final manuscript
 CMAPSS_DIR=path/to/CMAPSSData python analysis/make_fig1_v3.py   # Figure 1 of the final manuscript
 python upgrade3/analyse_upgrade3.py
-python analysis/make_supplementary_v26.py   # writes manuscript/supplementary_v26.md (final names and reference numbers)
+python upgrade3/analyse_upgrade3_corr.py
+python analysis/make_supplementary_v27.py   # writes manuscript/supplementary_v27.md (final names and reference numbers, Table S32)
 ```
 
 Tested with Python 3.12, NumPy 2.4, SciPy 1.17, scikit-learn 1.8 and Matplotlib 3.10. `round3_checks.py` reads the raw C-MAPSS test files to count padded windows.
