@@ -40,10 +40,10 @@ python analysis/revision_v10.py
 python control_a8/analyse_q3e.py
 python upgrade1/analyse_upgrade1.py
 python upgrade2/analyse_upgrade2b.py
-python analysis/make_fig1_fig67_v19.py   # Figures 6 and 7 of the final manuscript
-CMAPSS_DIR=path/to/CMAPSSData python analysis/make_fig1_v2.py   # Figure 1 of the final manuscript
+python analysis/make_fig67_v26.py   # Figures 6 and 7 of the final manuscript
+CMAPSS_DIR=path/to/CMAPSSData python analysis/make_fig1_v3.py   # Figure 1 of the final manuscript
 python upgrade3/analyse_upgrade3.py
-python analysis/make_supplementary_v25.py   # writes manuscript/supplementary_v25.md with the reference numbers of the main text
+python analysis/make_supplementary_v26.py   # writes manuscript/supplementary_v26.md (final names and reference numbers)
 ```
 
 Tested with Python 3.12, NumPy 2.4, SciPy 1.17, scikit-learn 1.8 and Matplotlib 3.10. `round3_checks.py` reads the raw C-MAPSS test files to count padded windows.
@@ -69,3 +69,5 @@ Code: MIT licence (`LICENSE`). Result files in `data/`: CC BY 4.0 (`data/LICENSE
 Please cite the paper and this archive: https://doi.org/10.5281/zenodo.24269263.
 
 The final supplementary file (manuscript/supplementary_v23.md) is supplementary_v17.md with the reference numbers of the main text applied (analysis/refmap_v23.json: old number -> new number).
+
+Naming: the paper calls the strategy sparsified-window training (SWT); protocols, scripts and result files keep the earlier name deployment-matched training (DMWT).
