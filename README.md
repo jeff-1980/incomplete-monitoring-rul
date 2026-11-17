@@ -39,7 +39,8 @@ python analysis/revision_v10.py
 python control_a8/analyse_q3e.py
 python upgrade1/analyse_upgrade1.py
 python upgrade2/analyse_upgrade2b.py
-python analysis/make_fig1_fig67_v19.py   # Figures 1, 6 and 7 of the final manuscript
+python analysis/make_fig1_fig67_v19.py   # Figures 6 and 7 of the final manuscript
+CMAPSS_DIR=path/to/CMAPSSData python analysis/make_fig1_v2.py   # Figure 1 of the final manuscript
 python analysis/make_supplementary_v17.py
 ```
 
@@ -64,3 +65,5 @@ Code: MIT licence (`LICENSE`). Result files in `data/`: CC BY 4.0 (`data/LICENSE
 ## Citation
 
 Please cite the paper and this archive: https://doi.org/10.5281/zenodo.24269263.
+
+The final supplementary file (manuscript/supplementary_v23.md) is supplementary_v17.md with the reference numbers of the main text applied (analysis/refmap_v23.json: old number -> new number).
