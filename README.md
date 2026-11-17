@@ -49,7 +49,7 @@ python realsys/analyse_realsys.py   # run inside realsys/
 python realsys/sens_continuation.py   # run inside realsys/; sensitivity analysis added after the runs
 python analysis/make_tradeoff.py   # trade-off between the recipes from stored errors (Table 10, Table S34)
 python analysis/sens_common_times.py   # N-CMAPSS errors at identical prediction times (Table S36)
-python analysis/make_supplementary_v33.py   # writes manuscript/supplementary_v33.md (final names and reference numbers, Tables S32 and S33)
+python analysis/make_supplementary_v34.py   # writes manuscript/supplementary_v34.md (final names and reference numbers, Tables S32 and S33)
 ```
 
 Tested with Python 3.12, NumPy 2.4, SciPy 1.17, scikit-learn 1.8 and Matplotlib 3.10. `round3_checks.py` reads the raw C-MAPSS test files to count padded windows.
