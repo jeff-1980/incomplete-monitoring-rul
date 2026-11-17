@@ -39,7 +39,7 @@ python analysis/revision_v10.py
 python control_a8/analyse_q3e.py
 python upgrade1/analyse_upgrade1.py
 python upgrade2/analyse_upgrade2b.py
-python analysis/make_fig6.py
+python analysis/make_fig1_fig67_v19.py   # Figures 1, 6 and 7 of the final manuscript
 python analysis/make_supplementary_v17.py
 ```
 
