@@ -1,0 +1,45 @@
+select-g tcn A1 [32, 0.0003] [16.153087615966797, 15.048022270202637, 16.118806838989258, 15.449193954467773]
+select-g tcn A5 [32, 0.0003] [15.866714477539062, 15.206619262695312, 16.197580337524414, 15.969594955444336]
+select-g tcn A6 [64, 0.001] [16.749099731445312, 16.133054733276367, 14.813334465026855, 15.019331932067871]
+select-g tcn A8 [32, 0.001] [15.033011436462402, 16.176925659179688, 15.39346981048584, 15.61287784576416]
+select-g tcn S4 [32, 0.001] [16.311399459838867, 16.838455200195312, 17.49720573425293, 16.366762161254883]
+tcn 0 changed arms ['A1', 'A8']
+tcn 0 retrained A1
+tcn 0 retrained A8
+tcn 1 changed arms ['A1', 'A8']
+tcn 1 retrained A1
+tcn 1 retrained A8
+tcn 2 changed arms ['A1', 'A8']
+tcn 2 retrained A1
+tcn 2 retrained A8
+tcn 3 changed arms ['A1', 'A8']
+tcn 3 retrained A1
+tcn 3 retrained A8
+tcn 4 changed arms ['A1', 'A8']
+tcn 4 retrained A1
+tcn 4 retrained A8
+select-g tf A1 [32, 0.001] [14.275761604309082, 15.672395706176758, 16.211687088012695, 15.30457878112793]
+select-g tf A5 [32, 0.001] [11.767557144165039, 12.81089973449707, 12.937373161315918, 14.593544006347656]
+select-g tf A6 [32, 0.001] [11.552101135253906, 12.748686790466309, 12.71635913848877, 12.563315391540527]
+select-g tf A8 [32, 0.001] [12.981010437011719, 15.195755958557129, 13.926573753356934, 14.428772926330566]
+select-g tf S4 [64, 0.0003] [15.49002742767334, 16.202688217163086, 14.919236183166504, 14.492377281188965]
+tf 0 changed arms ['A1', 'A6', 'S4']
+tf 0 retrained A1
+tf 0 retrained A6
+tf 0 retrained S4
+tf 1 changed arms ['A1', 'A6', 'S4']
+tf 1 retrained A1
+tf 1 retrained A6
+tf 1 retrained S4
+tf 2 changed arms ['A1', 'A6', 'S4']
+tf 2 retrained A1
+tf 2 retrained A6
+tf 2 retrained S4
+tf 3 changed arms ['A1', 'A6', 'S4']
+tf 3 retrained A1
+tf 3 retrained A6
+tf 3 retrained S4
+tf 4 changed arms ['A1', 'A6', 'S4']
+tf 4 retrained A1
+tf 4 retrained A6
+tf 4 retrained S4
