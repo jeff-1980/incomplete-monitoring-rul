@@ -22,9 +22,10 @@ for ds in ('mit', 'xjtu'):
     for v in cells.values():
         ts = list(range(R.T0, len(v['X']), R.K)); tot += len(ts)
         for t in n: n[t] += int(t in ts)
-    out.append(f"{ds}: {tot} prediction times; at t = 30, 40, 50 ({sum(n.values())} predictions, {100 * sum(n.values()) / tot:.1f}%) the blk scenario has no record before the outage: only the last three records are available, and the outage is the whole earlier history (27, 37, 47 cycles) rather than 50 cycles.")
+    out.append(f"{ds}: {tot} prediction times; at t = 30, 40, 50 ({sum(n.values())} predictions, {100 * sum(n.values()) / tot:.1f}%) the blk scenario has no record before the outage: only the last three records are available, and the outage is the whole earlier history (28, 38, 48 cycles, positions 0 to t - 3) rather than 50 cycles.")
 if len(sys.argv) > 2:
     a = pd.read_csv(sys.argv[2]); x = pd.read_csv(f'{exp}/xjtu.csv.gz'); b = x[(x.batch == a.batch.iloc[0]) & (x.battery_id == a.battery_id.iloc[0])].reset_index(drop=True)
     same = a.shape == b.shape and all((a[c].astype(str) == b[c].astype(str)).all() if not pd.api.types.is_numeric_dtype(a[c]) else np.allclose(a[c], b[c], equal_nan=True) for c in a.columns)
     out.append(f"XJTU per-cell table {a.batch.iloc[0]} {a.battery_id.iloc[0]} ({len(a)} rows) equals its rows in the merged table: {same}.")
+c = R.load('xjtu', exp); out.append('XJTU cycle types used for standardisation (batch x cycle description, after dropping the first cycle): ' + str(len(set(int(k) for v in c.values() for k in v['typ']))) + '; per batch: ' + ', '.join(f"{b} {len(set(int(k) for v in c.values() if v['batch'] == b for k in v['typ']))}" for b in sorted(set(v['batch'] for v in c.values()))) + '.')
 open('check_definitions.md', 'w', encoding='utf-8').write('\n'.join(out) + '\n'); print('\n'.join(out))

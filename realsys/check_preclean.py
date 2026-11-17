@@ -18,10 +18,10 @@ for (b, c), g in df.groupby(['batch', 'battery_id']):
     for t in range(R.T0, T, R.K):
         tot += 1
         for sc in n:
-            idx = R.scen_idx(sc, t); idx = idx[idx >= max(int(idx[0]), t - R.L)]; S = src[idx]; m = S >= 0
+            idx = R.scen_idx(sc, t); win = idx[idx >= t - R.L]; S = src[win]; m = S >= 0      # records that can enter the 200-cycle input; sources traced against all available records
             if m.any():
                 if not np.isin(S[m], idx).all(): n[sc] += 1
                 if (S[m] > t).any(): future += 1
-out.append(f"MIT: {tot} prediction times. Windows containing a record whose filled value comes from a cycle that is not among the available records of the scenario: "
+out.append(f"MIT: {tot} prediction times. Windows containing a record whose filled value comes from a cycle that is deleted in the scenario (not among its available records): "
            f"complete records {n['full']}, one record in 10 cycles {n['k10']} ({100 * n['k10'] / tot:.1f}%), outage {n['blk']} ({100 * n['blk'] / tot:.1f}%). Filled values taken from a cycle after the prediction time: {future}.")
 open('check_preclean.md', 'w', encoding='utf-8').write('\n'.join(out) + '\n'); print('\n'.join(out))
